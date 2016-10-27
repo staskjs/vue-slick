@@ -6,6 +6,8 @@ Supports only Vue >= 2
 
 ## Installation and usage
 
+See official documentation [here](http://kenwheeler.github.io/slick).
+
     $ npm install vue-slick
 
 ***NOTE***: `slick-carousel` official package appears to use `jquery` as a dependency in package.json,
