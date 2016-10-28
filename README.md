@@ -33,11 +33,11 @@ new Vue({
     // All slick methods can be used too, example here
     methods: {
         next() {
-            this.$refs.next();
+            this.$refs.slick.next();
         },
 
         prev() {
-            this.$refs.prev();
+            this.$refs.slick.prev();
         },
     },
 });
