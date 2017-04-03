@@ -39,6 +39,11 @@ new Vue({
         prev() {
             this.$refs.slick.prev();
         },
+
+        reInit() {
+            // Helpful if you have to deal with v-for to update dynamic lists
+            this.$refs.slick.reSlick();
+        },
     },
 });
 ```

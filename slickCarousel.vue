@@ -8,7 +8,7 @@ import Vue from 'vue';
 import $ from 'jquery';
 import 'slick-carousel';
 
-export default Vue.extend({
+export default {
 
   props: {
     options: {
@@ -20,21 +20,7 @@ export default Vue.extend({
   },
 
   mounted() {
-    const $slick = $(this.$el);
-
-    $slick.on('afterChange', this.afterChange);
-    $slick.on('beforeChange', this.beforeChange);
-    $slick.on('breakpoint', this.breakpoint);
-    $slick.on('destroy', this.destroy);
-    $slick.on('edge', this.edge);
-    $slick.on('init', this.init);
-    $slick.on('reInit', this.reInit);
-    $slick.on('setPosition', this.setPosition);
-    $slick.on('swipe', this.swipe);
-    $slick.on('lazyLoaded', this.lazyLoaded);
-    $slick.on('lazyLoadError', this.lazyLoadError);
-
-    $slick.slick(this.options);
+    this.create();
   },
 
   beforeDestroy() {
@@ -42,6 +28,29 @@ export default Vue.extend({
   },
 
   methods: {
+    create() {
+      const $slick = $(this.$el);
+
+      $slick.on('afterChange', this.onAfterChange);
+      $slick.on('beforeChange', this.onBeforeChange);
+      $slick.on('breakpoint', this.onBreakpoint);
+      $slick.on('destroy', this.onDestroy);
+      $slick.on('edge', this.onEdge);
+      $slick.on('init', this.onInit);
+      $slick.on('reInit', this.onReInit);
+      $slick.on('setPosition', this.onSetPosition);
+      $slick.on('swipe', this.onSwipe);
+      $slick.on('lazyLoaded', this.onLazyLoaded);
+      $slick.on('lazyLoadError', this.onLazyLoadError);
+
+      $slick.slick(this.options);
+    },
+
+    reSlick() {
+      $(this.$el).slick('unslick');
+      this.create();
+    },
+
     next() {
       $(this.$el).slick('slickNext');
     },
@@ -91,50 +100,50 @@ export default Vue.extend({
     },
 
     // Events
-    afterChange(event, slick, currentSlide) {
+    onAfterChange(event, slick, currentSlide) {
       this.$emit('afterChange', event, slick, currentSlide);
     },
 
-    beforeChange(event, slick, currentSlide, nextSlide) {
+    onBeforeChange(event, slick, currentSlide, nextSlide) {
       this.$emit('beforeChange', event, slick, currentSlide, nextSlide);
     },
 
-    breakpoint(event, slick, breakpoint) {
+    onBreakpoint(event, slick, breakpoint) {
       this.$emit('breakpoint', event, slick, breakpoint);
     },
 
-    destroy(event, slick) {
+    onDestroy(event, slick) {
       this.$emit('destroy', event, slick);
     },
 
-    edge(event, slick, direction) {
+    onEdge(event, slick, direction) {
       this.$emit('edge', event, slick, direction);
     },
 
-    init(event, slick) {
+    onInit(event, slick) {
       this.$emit('init', event, slick);
     },
 
-    reInit(event, slick) {
+    onReInit(event, slick) {
       this.$emit('reInit', event, slick);
     },
 
-    setPosition(event, slick) {
+    onSetPosition(event, slick) {
       this.$emit('setPosition', event, slick);
     },
 
-    swipe(event, slick, direction) {
+    onSwipe(event, slick, direction) {
       this.$emit('swipe', event, slick, direction);
     },
 
-    lazyLoaded(event, slick, image, imageSource) {
+    onLazyLoaded(event, slick, image, imageSource) {
       this.$emit('lazyLoaded', event, slick, image, imageSource);
     },
 
-    lazyLoadError(event, slick, image, imageSource) {
+    onLazyLoadError(event, slick, image, imageSource) {
       this.$emit('lazyLoadError', event, slick, image, imageSource);
     },
   },
 
-});
+};
 </script>
