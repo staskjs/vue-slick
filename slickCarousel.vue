@@ -83,8 +83,8 @@ export default {
       $(this.$el).slick('slickRemove', index, removeBefore);
     },
 
-    filter(filter) {
-      $(this.$el).slick('slickFilter', filter);
+    filter(filterData) {
+      $(this.$el).slick('slickFilter', filterData);
     },
 
     unfilter() {
