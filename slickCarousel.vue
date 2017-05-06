@@ -9,7 +9,7 @@ import $ from 'jquery';
 
 // check if request comes from browser and is not server rendered
 if (process.BROWSER_BUILD) {
-	var slick = require('slick-carousel')
+  const slick = require('slick-carousel')
 }
 
 export default {
