@@ -7,8 +7,9 @@
 import Vue from 'vue';
 import $ from 'jquery';
 
-// check if request comes from browser and is not server rendered
-if (process.BROWSER_BUILD) {
+// Check if request comes from browser and is not server rendered
+// BROWSER_BUILD is for Nuxt.js compatibility
+if (process.BROWSER_BUILD || process.BROWSER_BUILD == null) {
   const slick = require('slick-carousel')
 }
 
