@@ -51,8 +51,12 @@ export default {
       $slick.slick(this.options);
     },
 
+    destroy() {
+      $(this.el).slick('unslick');
+    },
+
     reSlick() {
-      $(this.$el).slick('unslick');
+      this.destroy();
       this.create();
     },
 
