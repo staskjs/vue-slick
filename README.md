@@ -57,3 +57,9 @@ new Vue({
   <a href="http://placehold.it/2000x1000"><img src="http://placehold.it/2000x1000" alt=""></a>
 </slick>
 ```
+
+If you need, you can import slick styles too:
+
+```
+import `node_modules/slick-carousel/slick/slick.css`;
+```
