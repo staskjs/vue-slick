@@ -60,6 +60,6 @@ new Vue({
 
 If you need, you can import slick styles too:
 
-```
+```javascript
 import `node_modules/slick-carousel/slick/slick.css`;
 ```
