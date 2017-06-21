@@ -52,7 +52,7 @@ export default {
     },
 
     destroy() {
-      $(this.el).slick('unslick');
+      $(this.$el).slick('unslick');
     },
 
     reSlick() {
