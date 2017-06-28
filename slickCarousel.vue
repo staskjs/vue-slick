@@ -3,156 +3,95 @@
     <slot></slot>
   </div>
 </template>
+
 <script>
-import Vue from 'vue';
-import $ from 'jquery';
+  import $ from 'jquery'
 
-// Check if request comes from browser and is not server rendered
-// BROWSER_BUILD is for Nuxt.js compatibility
-if (process.BROWSER_BUILD || process.BROWSER_BUILD == null) {
-  const slick = require('slick-carousel')
-}
+  if (process.BROWSER_BUILD || process.BROWSER_BUILD === null) {
+    const slick = require('slick-carousel') //eslint-disable-line
+  }
 
-export default {
+  const slickEvents = [
+    'afterChange',
+    'beforeChange',
+    'breakpoint',
+    'destroy',
+    'edge',
+    'init',
+    'reInit',
+    'setPosition',
+    'swipe',
+    'lazyLoaded',
+    'lazyLoadError'
+  ]
+  const slickMethods = [
+    'slickCurrentSlide',
+    'slickGoTo',
+    'slickNext',
+    'slickPrev',
+    'slickPause',
+    'slickPlay',
+    'slickAdd',
+    'slickRemove',
+    'slickFilter',
+    'slickUnfilter',
+    'slickGetOption',
+    'slickSetOption',
+    'unslick',
+    'getSlick'
+  ]
 
-  props: {
-    options: {
-      type: Object,
-      default() {
-        return {};
+  function makeMethods () {
+    return slickMethods.reduce(function (acc, method) {
+      acc[ method ] = function () {
+        const $slick = $(this.$el)
+        const args = [ method, ...arguments ]
+        return $slick.slick.apply($slick, args)
+      }
+      return acc
+    }, {})
+  }
+
+  function registerEvents (ctx) {
+    slickEvents.forEach(event => {
+      $(ctx.$el).on(event, function () {
+        const args = [ event, ...arguments ]
+        const currentSlide = ctx.slickCurrentSlide()
+        ctx.$emit.apply(ctx, args)
+        ctx.$emit('input', currentSlide)
+      })
+    })
+  }
+
+  export default {
+    props: {
+      options: {
+        type: Object,
+        default: () => ({})
       },
+      value: {
+        type: Number
+      }
     },
-  },
-
-  mounted() {
-    this.create();
-  },
-
-  beforeDestroy() {
-    $(this.$el).slick('unslick');
-  },
-
-  methods: {
-    create() {
-      const $slick = $(this.$el);
-
-      $slick.on('afterChange', this.onAfterChange);
-      $slick.on('beforeChange', this.onBeforeChange);
-      $slick.on('breakpoint', this.onBreakpoint);
-      $slick.on('destroy', this.onDestroy);
-      $slick.on('edge', this.onEdge);
-      $slick.on('init', this.onInit);
-      $slick.on('reInit', this.onReInit);
-      $slick.on('setPosition', this.onSetPosition);
-      $slick.on('swipe', this.onSwipe);
-      $slick.on('lazyLoaded', this.onLazyLoaded);
-      $slick.on('lazyLoadError', this.onLazyLoadError);
-
-      $slick.slick(this.options);
+    mounted () {
+      this.create()
     },
-
-    destroy() {
-      $(this.$el).slick('unslick');
+    beforeDestroy () {
+      this.destroy()
     },
-
-    reSlick() {
-      this.destroy();
-      this.create();
-    },
-
-    next() {
-      $(this.$el).slick('slickNext');
-    },
-
-    prev() {
-      $(this.$el).slick('slickPrev');
-    },
-
-    pause() {
-      $(this.$el).slick('slickPause');
-    },
-
-    play() {
-      $(this.$el).slick('slickPlay');
-    },
-
-    goTo(index, dontAnimate) {
-      $(this.$el).slick('slickGoTo', index, dontAnimate);
-    },
-
-    currentSlide() {
-      $(this.$el).slick('slickCurrentSlide');
-    },
-
-    add(element, index, addBefore) {
-      $(this.$el).slick('slickAdd', element, index, addBefore);
-    },
-
-    remove(index, removeBefore) {
-      $(this.$el).slick('slickRemove', index, removeBefore);
-    },
-
-    filter(filterData) {
-      $(this.$el).slick('slickFilter', filterData);
-    },
-
-    unfilter() {
-      $(this.$el).slick('slickUnfilter');
-    },
-
-    getOption(option) {
-      $(this.$el).slick('slickGetOption', option);
-    },
-
-    setOption(option, value, refresh) {
-      $(this.$el).slick('slickSetOption', option, value, refresh);
-    },
-
-    // Events
-    onAfterChange(event, slick, currentSlide) {
-      this.$emit('afterChange', event, slick, currentSlide);
-    },
-
-    onBeforeChange(event, slick, currentSlide, nextSlide) {
-      this.$emit('beforeChange', event, slick, currentSlide, nextSlide);
-    },
-
-    onBreakpoint(event, slick, breakpoint) {
-      this.$emit('breakpoint', event, slick, breakpoint);
-    },
-
-    onDestroy(event, slick) {
-      this.$emit('destroy', event, slick);
-    },
-
-    onEdge(event, slick, direction) {
-      this.$emit('edge', event, slick, direction);
-    },
-
-    onInit(event, slick) {
-      this.$emit('init', event, slick);
-    },
-
-    onReInit(event, slick) {
-      this.$emit('reInit', event, slick);
-    },
-
-    onSetPosition(event, slick) {
-      this.$emit('setPosition', event, slick);
-    },
-
-    onSwipe(event, slick, direction) {
-      this.$emit('swipe', event, slick, direction);
-    },
-
-    onLazyLoaded(event, slick, image, imageSource) {
-      this.$emit('lazyLoaded', event, slick, image, imageSource);
-    },
-
-    onLazyLoadError(event, slick, image, imageSource) {
-      this.$emit('lazyLoadError', event, slick, image, imageSource);
-    },
-  },
-
-};
+    methods: {
+      create () {
+        $(this.$el).slick(this.options)
+        registerEvents(this)
+      },
+      destroy () {
+        $(this.$el).slick('unslick')
+      },
+      reSlick () {
+        this.destroy()
+        this.create()
+      },
+      ...makeMethods()
+    }
+  }
 </script>
