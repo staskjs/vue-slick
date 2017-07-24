@@ -81,7 +81,7 @@ export default {
     },
 
     currentSlide() {
-      $(this.$el).slick('slickCurrentSlide');
+      return $(this.$el).slick('slickCurrentSlide');
     },
 
     add(element, index, addBefore) {
