@@ -108,6 +108,10 @@ export default {
       $(this.$el).slick('slickSetOption', option, value, refresh);
     },
 
+    setPosition() {
+      $(this.$el).slick('setPosition');
+    },
+
     // Events
     onAfterChange(event, slick, currentSlide) {
       this.$emit('afterChange', event, slick, currentSlide);
