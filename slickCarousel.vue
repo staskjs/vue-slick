@@ -27,7 +27,7 @@ export default {
     this.create();
   },
 
-  beforeDestroy() {
+  destroyed() {
     $(this.$el).slick('unslick');
   },
 
