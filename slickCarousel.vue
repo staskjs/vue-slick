@@ -7,7 +7,7 @@
 import Vue from 'vue';
 import $ from 'jquery';
 
-// Check if request comes from browser and is not server rendered
+// Check if the request came from the browser and is not server rendered
 if (typeof window !== 'undefined') {
   const slick = require('slick-carousel')
 }
