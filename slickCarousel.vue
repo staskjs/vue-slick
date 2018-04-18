@@ -7,7 +7,7 @@
 import Vue from 'vue';
 import $ from 'jquery';
 
-// Check if the request came from the browser and is not server rendered
+// Check if request comes from browser and is not server rendered
 if (typeof window !== 'undefined') {
   const slick = require('slick-carousel')
 }
@@ -15,12 +15,8 @@ if (typeof window !== 'undefined') {
 export default {
 
   props: {
-    options: {
-      type: Object,
-      default() {
-        return {};
-      },
-    },
+    options: { type: Object, default () { return {} } },
+    destroyable: { type: Boolean, default: true }
   },
 
   mounted() {
@@ -28,12 +24,13 @@ export default {
   },
 
   destroyed() {
-    $(this.$el).slick('unslick');
+    if (this.destroyable) $(this.$el).slick('unslick');
   },
 
   methods: {
     create() {
       const $slick = $(this.$el);
+      console.log(this.$el)
 
       $slick.on('afterChange', this.onAfterChange);
       $slick.on('beforeChange', this.onBeforeChange);
