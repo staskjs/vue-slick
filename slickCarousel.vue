@@ -13,6 +13,7 @@ if (typeof window !== 'undefined') {
 }
 
 export default {
+  data () { return { slickEl: null } },
 
   props: {
     options: { type: Object, default () { return {} } },
@@ -24,44 +25,41 @@ export default {
   },
 
   destroyed() {
-    if (this.destroyable) $(this.$el).slick('unslick');
+    if (this.destroyable) this.slickEl.slick('unslick');
   },
 
   methods: {
     create() {
-      const $slick = $(this.$el);
-      console.log(this.$el)
+      this.slickEl = $(this.$el);
 
-      $slick.on('afterChange', this.onAfterChange);
-      $slick.on('beforeChange', this.onBeforeChange);
-      $slick.on('breakpoint', this.onBreakpoint);
-      $slick.on('destroy', this.onDestroy);
-      $slick.on('edge', this.onEdge);
-      $slick.on('init', this.onInit);
-      $slick.on('reInit', this.onReInit);
-      $slick.on('setPosition', this.onSetPosition);
-      $slick.on('swipe', this.onSwipe);
-      $slick.on('lazyLoaded', this.onLazyLoaded);
-      $slick.on('lazyLoadError', this.onLazyLoadError);
+      this.slickEl.on('afterChange', this.onAfterChange);
+      this.slickEl.on('beforeChange', this.onBeforeChange);
+      this.slickEl.on('breakpoint', this.onBreakpoint);
+      this.slickEl.on('destroy', this.onDestroy);
+      this.slickEl.on('edge', this.onEdge);
+      this.slickEl.on('init', this.onInit);
+      this.slickEl.on('reInit', this.onReInit);
+      this.slickEl.on('setPosition', this.onSetPosition);
+      this.slickEl.on('swipe', this.onSwipe);
+      this.slickEl.on('lazyLoaded', this.onLazyLoaded);
+      this.slickEl.on('lazyLoadError', this.onLazyLoadError);
 
-      $slick.slick(this.options);
+      this.slickEl.slick(this.options);
     },
 
     destroy() {
-      const $slick = $(this.$el);
-
-      $slick.off('afterChange', this.onAfterChange);
-      $slick.off('beforeChange', this.onBeforeChange);
-      $slick.off('breakpoint', this.onBreakpoint);
-      $slick.off('destroy', this.onDestroy);
-      $slick.off('edge', this.onEdge);
-      $slick.off('init', this.onInit);
-      $slick.off('reInit', this.onReInit);
-      $slick.off('setPosition', this.onSetPosition);
-      $slick.off('swipe', this.onSwipe);
-      $slick.off('lazyLoaded', this.onLazyLoaded);
-      $slick.off('lazyLoadError', this.onLazyLoadError);
-      $(this.$el).slick('unslick');
+      this.slickEl.off('afterChange', this.onAfterChange);
+      this.slickEl.off('beforeChange', this.onBeforeChange);
+      this.slickEl.off('breakpoint', this.onBreakpoint);
+      this.slickEl.off('destroy', this.onDestroy);
+      this.slickEl.off('edge', this.onEdge);
+      this.slickEl.off('init', this.onInit);
+      this.slickEl.off('reInit', this.onReInit);
+      this.slickEl.off('setPosition', this.onSetPosition);
+      this.slickEl.off('swipe', this.onSwipe);
+      this.slickEl.off('lazyLoaded', this.onLazyLoaded);
+      this.slickEl.off('lazyLoadError', this.onLazyLoadError);
+      this.slickEl.slick('unslick');
     },
 
     reSlick() {
@@ -70,55 +68,55 @@ export default {
     },
 
     next() {
-      $(this.$el).slick('slickNext');
+      this.slickEl.slick('slickNext');
     },
 
     prev() {
-      $(this.$el).slick('slickPrev');
+      this.slickEl.slick('slickPrev');
     },
 
     pause() {
-      $(this.$el).slick('slickPause');
+      this.slickEl.slick('slickPause');
     },
 
     play() {
-      $(this.$el).slick('slickPlay');
+      this.slickEl.slick('slickPlay');
     },
 
     goTo(index, dontAnimate) {
-      $(this.$el).slick('slickGoTo', index, dontAnimate);
+      this.slickEl.slick('slickGoTo', index, dontAnimate);
     },
 
     currentSlide() {
-      return $(this.$el).slick('slickCurrentSlide');
+      return this.slickEl.slick('slickCurrentSlide');
     },
 
     add(element, index, addBefore) {
-      $(this.$el).slick('slickAdd', element, index, addBefore);
+      this.slickEl.slick('slickAdd', element, index, addBefore);
     },
 
     remove(index, removeBefore) {
-      $(this.$el).slick('slickRemove', index, removeBefore);
+      this.slickEl.slick('slickRemove', index, removeBefore);
     },
 
     filter(filterData) {
-      $(this.$el).slick('slickFilter', filterData);
+      this.slickEl.slick('slickFilter', filterData);
     },
 
     unfilter() {
-      $(this.$el).slick('slickUnfilter');
+      this.slickEl.slick('slickUnfilter');
     },
 
     getOption(option) {
-      $(this.$el).slick('slickGetOption', option);
+      this.slickEl.slick('slickGetOption', option);
     },
 
     setOption(option, value, refresh) {
-      $(this.$el).slick('slickSetOption', option, value, refresh);
+      this.slickEl.slick('slickSetOption', option, value, refresh);
     },
 
     setPosition() {
-      $(this.$el).slick('setPosition');
+      this.slickEl.slick('setPosition');
     },
 
     // Events
