@@ -13,26 +13,25 @@ if (typeof window !== 'undefined') {
 }
 
 export default {
-
   props: {
     options: {
       type: Object,
-      default() {
+      default: function() {
         return {};
       },
     },
   },
 
-  mounted() {
+  mounted: function() {
     this.create();
   },
 
-  destroyed() {
+  destroyed: function() {
     $(this.$el).slick('unslick');
   },
 
   methods: {
-    create() {
+    create: function() {
       const $slick = $(this.$el);
 
       $slick.on('afterChange', this.onAfterChange);
@@ -50,7 +49,7 @@ export default {
       $slick.slick(this.options);
     },
 
-    destroy() {
+    destroy: function() {
       const $slick = $(this.$el);
 
       $slick.off('afterChange', this.onAfterChange);
@@ -67,108 +66,109 @@ export default {
       $(this.$el).slick('unslick');
     },
 
-    reSlick() {
+    reSlick: function() {
       this.destroy();
       this.create();
     },
 
-    next() {
+    next: function() {
       $(this.$el).slick('slickNext');
     },
 
-    prev() {
+    prev: function() {
       $(this.$el).slick('slickPrev');
     },
 
-    pause() {
+    pause: function() {
       $(this.$el).slick('slickPause');
     },
 
-    play() {
+    play: function() {
       $(this.$el).slick('slickPlay');
     },
 
-    goTo(index, dontAnimate) {
+    goTo: function(index, dontAnimate) {
       $(this.$el).slick('slickGoTo', index, dontAnimate);
     },
 
-    currentSlide() {
+    currentSlide: function() {
       return $(this.$el).slick('slickCurrentSlide');
     },
 
-    add(element, index, addBefore) {
+    add: function(element, index, addBefore) {
       $(this.$el).slick('slickAdd', element, index, addBefore);
     },
 
-    remove(index, removeBefore) {
+    remove: function(index, removeBefore) {
       $(this.$el).slick('slickRemove', index, removeBefore);
     },
 
-    filter(filterData) {
+    filter: function(filterData) {
       $(this.$el).slick('slickFilter', filterData);
     },
 
-    unfilter() {
+    unfilter: function() {
       $(this.$el).slick('slickUnfilter');
     },
 
-    getOption(option) {
+    getOption: function(option) {
       $(this.$el).slick('slickGetOption', option);
     },
 
-    setOption(option, value, refresh) {
+    setOption: function(option, value, refresh) {
       $(this.$el).slick('slickSetOption', option, value, refresh);
     },
 
-    setPosition() {
+    setPosition: function() {
       $(this.$el).slick('setPosition');
     },
 
     // Events
-    onAfterChange(event, slick, currentSlide) {
+    onAfterChange: function(event, slick, currentSlide) {
       this.$emit('afterChange', event, slick, currentSlide);
     },
 
-    onBeforeChange(event, slick, currentSlide, nextSlide) {
+    onBeforeChange: function(event, slick, currentSlide, nextSlide) {
       this.$emit('beforeChange', event, slick, currentSlide, nextSlide);
     },
 
-    onBreakpoint(event, slick, breakpoint) {
+    onBreakpoint: function(event, slick, breakpoint) {
       this.$emit('breakpoint', event, slick, breakpoint);
     },
 
-    onDestroy(event, slick) {
+    onDestroy: function(event, slick) {
       this.$emit('destroy', event, slick);
     },
 
-    onEdge(event, slick, direction) {
+    onEdge: function(event, slick, direction) {
       this.$emit('edge', event, slick, direction);
     },
 
-    onInit(event, slick) {
+    onInit: function(event, slick) {
       this.$emit('init', event, slick);
     },
 
-    onReInit(event, slick) {
+    onReInit: function(event, slick) {
       this.$emit('reInit', event, slick);
     },
 
-    onSetPosition(event, slick) {
+    onSetPosition: function(event, slick) {
       this.$emit('setPosition', event, slick);
     },
 
-    onSwipe(event, slick, direction) {
+    onSwipe: function(event, slick, direction) {
       this.$emit('swipe', event, slick, direction);
     },
 
-    onLazyLoaded(event, slick, image, imageSource) {
+    onLazyLoaded: function(event, slick, image, imageSource) {
       this.$emit('lazyLoaded', event, slick, image, imageSource);
     },
 
-    onLazyLoadError(event, slick, image, imageSource) {
+    onLazyLoadError: function(event, slick, image, imageSource) {
       this.$emit('lazyLoadError', event, slick, image, imageSource);
     },
   },
 
 };
 </script>
+
