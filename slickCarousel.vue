@@ -8,7 +8,8 @@ import Vue from 'vue';
 import $ from 'jquery';
 
 // Check if the request came from the browser and is not server rendered
-if (typeof window !== 'undefined') {
+if (typeof window !== 'undefined' &&
+  ((typeof process !== undefined && process.browser) || typeof process === undefined)) {
   const slick = require('slick-carousel')
 }
 
