@@ -4,12 +4,11 @@
   </div>
 </template>
 <script>
-import Vue from 'vue';
 import $ from 'jquery';
 
 // Check if the request came from the browser and is not server rendered
 if (typeof window !== 'undefined') {
-  const slick = require('slick-carousel')
+  import('slick-carousel')
 }
 
 export default {
@@ -171,4 +170,3 @@ export default {
 
 };
 </script>
-

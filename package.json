@@ -2,17 +2,16 @@
   "name": "vue-slick",
   "version": "1.1.13",
   "description": "Vue component for Slick-carousel (http://kenwheeler.github.io/slick)",
-  "main": "slickCarousel.vue",
-  "types": "index",
+  "main": "dist/slickCarousel.cjs.js",
+  "module": "dist/slickCarousel.esm.js",
+  "source": "src/slickCarousel.vue",
+  "types": "src/index",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rollup -c"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/staskjs/vue-slick.git"
-  },
-  "browserify": {
-    "transform": ["vueify"]
   },
   "keywords": [
     "slick",
@@ -30,5 +29,14 @@
   },
   "dependencies": {
     "slick-carousel": "^1.6.0"
+  },
+  "devDependencies": {
+    "jquery": "*",
+    "rollup": "^0.66.6",
+    "rollup-plugin-buble": "^0.19.4",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-node-resolve": "^3.4.0",
+    "rollup-plugin-vue": "^4.3.2",
+    "vue-template-compiler": "^2.5.17"
   }
 }
