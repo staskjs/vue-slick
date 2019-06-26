@@ -26,12 +26,10 @@ var script = {
   },
 
   destroyed: function() {
-    var this$1 = this;
-
-    var manualDestroy = function () {
-      $(this$1.$el).slick('unslick');
+    var manualDestroy = function() {
+      $(this.$el).slick('unslick');
       console.log('unslicked');
-      this$1.$el.removeEventListener(manualDestroy);
+      this.$el.removeEventListener(manualDestroy);
     };
     this.$el.addEventListener('transitionend', manualDestroy);
   },

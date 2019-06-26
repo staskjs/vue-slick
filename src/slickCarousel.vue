@@ -26,7 +26,7 @@ export default {
   },
 
   destroyed: function() {
-    const manualDestroy = () => {
+    var manualDestroy = function() {
       $(this.$el).slick('unslick');
       console.log('unslicked');
       this.$el.removeEventListener(manualDestroy);
