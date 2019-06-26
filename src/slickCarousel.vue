@@ -26,7 +26,12 @@ export default {
   },
 
   destroyed: function() {
-    $(this.$el).slick('unslick');
+    const manualDestroy = () => {
+      $(this.$el).slick('unslick');
+      console.log('unslicked');
+      this.$el.removeEventListener(manualDestroy);
+    };
+    this.$el.addEventListener('transitionend', manualDestroy);
   },
 
   methods: {
