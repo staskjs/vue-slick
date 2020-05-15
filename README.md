@@ -1,5 +1,8 @@
 # Slick for Vue.js
 
+# ATTENTION! 
+This package is no longer supported by its main contributor (@staskjs). If you would like to work on it, I will gladly add you as a contributor. Please reach me on telegram @staskjs.
+
 ## Vue support
 
 Supports only Vue >= 2
