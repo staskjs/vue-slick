@@ -4,25 +4,13 @@ import node from 'rollup-plugin-node-resolve'
 import vue from 'rollup-plugin-vue'
 
 export default {
-  input: 'src/slickCarousel.vue',
-  external: [
-    'jquery',
-    'slick-carousel'
-  ],
+  input: 'src/wrapper.js',
   output: [
     {
-      format: 'esm',
-      file: 'dist/slickCarousel.esm.js',
-    },
-    {
-      format: 'umd',
-      name: 'vueSlickCarousel',
       file: 'dist/slickCarousel.umd.js',
-    },
-    {
-      format: 'cjs',
-      file: 'dist/slickCarousel.cjs.js',
-    },
+      format: 'umd',
+      name: 'slickCarousel.umd',
+    }
   ],
   plugins: [common(), node(), vue(), buble()]
 }
