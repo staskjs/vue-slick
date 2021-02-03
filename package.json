@@ -7,8 +7,11 @@
   "source": "src/slickCarousel.vue",
   "types": "src/index",
   "scripts": {
-    "build": "rollup -c",
-    "prepublishOnly": "npm run build"
+    "build": "npm run build:cjs & npm run build:es & npm run build:umd",
+    "prepublishOnly": "npm run build",
+    "build:cjs": "rollup --config rollup.config.js --format cjs -e jquery,slick-carousel --file dist/slickCarousel.cjs.js",
+    "build:es": "rollup --config rollup.config.js --format es -e jquery --file dist/slickCarousel.esm.js",
+    "build:umd": "rollup --config rollup.config.js --format umd -e jquery --file dist/slickCarousel.umd.js"
   },
   "repository": {
     "type": "git",
