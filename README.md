@@ -7,6 +7,8 @@ This package is no longer supported by its main contributor (@staskjs). If you w
 
 Supports only Vue >= 2
 
+Vue 3 Support coming soon! 😊
+
 ## Installation and usage
 
 See official documentation [here](http://kenwheeler.github.io/slick).
