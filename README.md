@@ -83,7 +83,7 @@ new Vue({
         handleLazyLoaded(event, slick, image, imageSource) {
             console.log('handleLazyLoaded', event, slick, image, imageSource);
         },
-        handleLazeLoadError(event, slick, image, imageSource) {
+        handleLazyLoadError(event, slick, image, imageSource) {
             console.log('handleLazeLoadError', event, slick, image, imageSource);
         },
     },
@@ -104,7 +104,7 @@ new Vue({
   @setPosition="handleSetPosition"
   @swipe="handleSwipe"
   @lazyLoaded="handleLazyLoaded"
-  @lazyLoadError="handleLazeLoadError">
+  @lazyLoadError="handleLazyLoadError">
   <a href="http://placehold.it/2000x1000"><img src="http://placehold.it/2000x1000" alt=""></a>
   <a href="http://placehold.it/2000x1000"><img src="http://placehold.it/2000x1000" alt=""></a>
   <a href="http://placehold.it/2000x1000"><img src="http://placehold.it/2000x1000" alt=""></a>
