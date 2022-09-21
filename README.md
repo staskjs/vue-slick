@@ -12,9 +12,9 @@ Supports only Vue >= 2
 See official documentation [here](http://kenwheeler.github.io/slick).
 
 ```sh
-npm install vue-slick slick
+npm install vue-slick
 # or
-yarn add vue-slick slick
+yarn add vue-slick
 ```
 
 ***NOTE***: `slick-carousel` official package appears to use `jquery` as a dependency in package.json,
