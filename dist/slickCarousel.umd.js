@@ -10,7 +10,7 @@
 
   // Check if the request came from the browser and is not server rendered
   if (typeof window !== 'undefined') {
-    import('slick-carousel');
+    Promise.resolve(import('slick-carousel'));
   }
 
   var script = {

@@ -8,7 +8,7 @@ var $ = _interopDefault(require('jquery'));
 
 // Check if the request came from the browser and is not server rendered
 if (typeof window !== 'undefined') {
-  Promise.resolve(require('slick-carousel'));
+  Promise.resolve(Promise.resolve(require('slick-carousel')));
 }
 
 var script = {
