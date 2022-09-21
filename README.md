@@ -1,6 +1,6 @@
 # Slick for Vue.js
 
-# ATTENTION! 
+# ATTENTION!
 This package is no longer supported by its main contributor ([@staskjs](https://github.com/staskjs)). If you would like to work on it, I will gladly add you as a collaborator. Please reach me on telegram @staskjs.
 
 ## Vue support
@@ -11,7 +11,11 @@ Supports only Vue >= 2
 
 See official documentation [here](http://kenwheeler.github.io/slick).
 
-    $ npm install vue-slick
+```sh
+npm install vue-slick slick
+# or
+yarn add vue-slick slick
+```
 
 ***NOTE***: `slick-carousel` official package appears to use `jquery` as a dependency in package.json,
 despite it would be more appropriate to use it as a peer dependency to avoid possibility of using multiple
