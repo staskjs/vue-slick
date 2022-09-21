@@ -29,9 +29,7 @@
   },
   "homepage": "https://github.com/staskjs/vue-slick#readme",
   "peerDependencies": {
-    "jquery": "*"
-  },
-  "dependencies": {
+    "jquery": "*",
     "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
