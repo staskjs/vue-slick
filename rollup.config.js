@@ -5,7 +5,6 @@ import vue from 'rollup-plugin-vue'
 
 export default {
   input: 'src/wrapper.js',
-  external: ['slick-carousel'],
   output: [
     {
       file: 'dist/slickCarousel.umd.js',
