@@ -1,6 +1,6 @@
 {
   "name": "vue-slick",
-  "version": "1.1.21",
+  "version": "1.2.0",
   "description": "Vue component for Slick-carousel (http://kenwheeler.github.io/slick)",
   "main": "dist/slickCarousel.cjs.js",
   "module": "dist/slickCarousel.esm.js",
@@ -10,8 +10,8 @@
     "build": "npm run build:cjs & npm run build:es & npm run build:umd",
     "prepublishOnly": "npm run build",
     "build:cjs": "rollup --config rollup.config.js --format cjs -e jquery,slick-carousel --file dist/slickCarousel.cjs.js",
-    "build:es": "rollup --config rollup.config.js --format es -e jquery --file dist/slickCarousel.esm.js",
-    "build:umd": "rollup --config rollup.config.js --format umd -e jquery --file dist/slickCarousel.umd.js"
+    "build:es": "rollup --config rollup.config.js --format es -e jquery,slick-carousel --file dist/slickCarousel.esm.js",
+    "build:umd": "rollup --config rollup.config.js --format umd -e jquery,slick-carousel --file dist/slickCarousel.umd.js"
   },
   "repository": {
     "type": "git",
