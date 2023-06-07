@@ -7,6 +7,8 @@ This package is no longer supported by its main contributor ([@staskjs](https://
 
 Supports only Vue >= 2
 
+Vue3 slick u will find [here](https://github.com/Efcolipt/vue-slick-ts)
+
 ## Installation and usage
 
 See official documentation [here](http://kenwheeler.github.io/slick).
