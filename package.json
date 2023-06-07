@@ -11,7 +11,8 @@
     "prepublishOnly": "npm run build",
     "build:cjs": "rollup --config rollup.config.js --format cjs -e jquery,slick-carousel --file dist/slickCarousel.cjs.js",
     "build:es": "rollup --config rollup.config.js --format es -e jquery,slick-carousel --file dist/slickCarousel.esm.js",
-    "build:umd": "rollup --config rollup.config.js --format umd -e jquery,slick-carousel --file dist/slickCarousel.umd.js"
+    "build:umd": "rollup --config rollup.config.js --format umd -e jquery,slick-carousel --file dist/slickCarousel.umd.js",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -29,18 +30,53 @@
   },
   "homepage": "https://github.com/staskjs/vue-slick#readme",
   "peerDependencies": {
-    "jquery": "*"
+    "jquery": "*",
+    "vue": ">=2"
   },
   "dependencies": {
     "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.6.5",
+    "@commitlint/config-conventional": "^17.6.5",
+    "@release-it/conventional-changelog": "^5.1.1",
+    "@types/jquery": "^3.5.16",
+    "husky": "^8.0.3",
     "jquery": "*",
-    "rollup": "^0.67.0",
-    "rollup-plugin-buble": "^0.19.4",
-    "rollup-plugin-commonjs": "^9.2.0",
-    "rollup-plugin-node-resolve": "^3.4.0",
-    "rollup-plugin-vue": "^4.3.2",
+    "release-it": "^15.10.5",
+    "rollup": "^3.23.1",
+    "rollup-plugin-buble": "^0.19.8",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-vue": "^6.0.0",
     "vue-template-compiler": "^2.5.17"
+  },
+  "release-it": {
+    "git": {
+      "commitMessage": "chore(release): v${version}"
+    },
+    "github": {
+      "release": true,
+      "releaseName": "v${version}"
+    },
+    "plugins": {
+      "@release-it/conventional-changelog": {
+        "preset": "angular",
+        "infile": "CHANGELOG.md",
+        "header": "# Changelog"
+      }
+    }
+  },
+  "commitlint": {
+    "rules": {
+      "header-max-length": [
+        2,
+        "always",
+        130
+      ]
+    },
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   }
 }
